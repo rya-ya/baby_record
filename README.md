@@ -75,12 +75,110 @@ Baby Recordは、赤ちゃんの育児記録を管理するWebアプリケーシ
 
 ## 起動方法
 
-起動手順については、Dockerを利用した開発環境に合わせて記載します。
+### 1. 前提条件
 
-詳細な手順は、環境変数の設定やデータベースの準備方法を含めて整備予定です。
+以下の環境がインストールされていることを前提とします。
+
+- Docker
+- Docker Compose
+- Git
+
+### 2. リポジトリのクローン
+
+```bash
+git clone <GitHubリポジトリのURL>
+cd baby_rec
+```
+
+### 3. データベースの環境変数設定
+
+プロジェクトのルートディレクトリにて、`docker/db/db-variables.env` を作成します。
+
+```dotenv
+MYSQL_ROOT_PASSWORD=任意のローカル開発用パスワード
+MYSQL_DATABASE=baby_record
+MYSQL_USER=baby_user
+MYSQL_PASSWORD=任意のローカル開発用パスワード
+```
+
+### 4. Laravelの環境設定
+
+`.env.example` をコピーして、`.env` を作成します。
+
+```bash
+cp src/.env.example src/.env
+```
+
+`src/.env` のデータベース接続設定を以下のように変更します。
+
+```dotenv
+DB_CONNECTION=mysql
+DB_HOST=db
+DB_PORT=3306
+DB_DATABASE=baby_record
+DB_USERNAME=baby_user
+DB_PASSWORD=手順3で設定したMYSQL_PASSWORDと同じ値
+```
+
+### 5. Dockerコンテナのビルド・起動
+
+```bash
+docker compose up -d --build
+```
+
+### 6. PHPライブラリのインストール
+
+```bash
+docker compose exec app composer install
+```
+
+### 7. Laravelのアプリケーションキー生成
+
+```bash
+docker compose exec app php artisan key:generate
+```
+
+設定キャッシュをクリアします。
+
+```bash
+docker compose exec app php artisan config:clear
+```
+
+### 8. JavaScriptライブラリのインストール・ビルド
+
+依存パッケージをインストールします。
+
+```bash
+docker compose exec app npm install
+```
+
+ViteでCSS・JavaScriptをビルドします。
+
+```bash
+docker compose exec app npm run build
+```
+
+### 9. データベースの構築
+
+マイグレーションとシーダーを実行します。
+
+```bash
+docker compose exec app php artisan migrate --seed
+```
+
+### 10. アプリケーションへのアクセス
+
+ブラウザで以下のURLにアクセスします。
+
+http://localhost
+
+### 補足
+
+- `.env`、`docker/db/db-variables.env`、データベースのデータはGit管理対象外です。
+- データベースを新規構築する場合、以前のユーザー情報や育児記録は引き継がれません。
+- パスワードなどの機密情報はGitHubに登録しないでください。
 
 ## 今後の改善予定
 
-- AWS EC2へのデプロイ
 - 操作性や画面デザインの改善
 - 必要に応じた機能追加
