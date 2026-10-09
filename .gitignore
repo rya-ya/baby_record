@@ -1,0 +1,17 @@
+# MySQLデータ
+docker/db/mysql_data
+
+# DB接続情報
+/docker/db/db-variables.env
+
+# Laravelの環境設定・依存ライブラリ
+/src/.env
+/src/vendor/
+/src/node_modules/
+.phpunit.result.cache
+
+# IDE・OS
+/.idea/
+/.vscode/
+.DS_Store
+Thumbs.db

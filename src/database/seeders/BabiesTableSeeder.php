@@ -1,0 +1,32 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+
+use App\Models\Baby;
+
+class BabiesTableSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        Baby::create([
+            'name'=>'ぽこ',
+            'gender'=>'2',
+            'birthday'=>'2026-09-01',
+            'memo' => '',
+            'home_id' => 1,
+        ]);
+        Baby::create([
+            'name'=>'ベビー',
+            'gender'=>'1',
+            'birthday'=>'2026-09-24',
+            'memo' => '',
+            'home_id' => 1,
+        ]);
+    }
+}
