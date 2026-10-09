@@ -15,13 +15,9 @@ class HomesTableSeeder extends Seeder
     public function run(): void
     {
         Home::create([
-            'name' => '笠野',
+            'name' => 'テストユーザー',
             'user_id' => 1,
         ]);
 
-        Home::create([
-            'name' => '山田',
-            'user_id' => 2,
-        ]);
     }
 }

@@ -28,17 +28,10 @@ class DatabaseSeeder extends Seeder
 
 
         User::factory()->create([
-            'name' => '笠野',
-            'email' => 'test1@yahoo.co.jp',
+            'name' => 'テストユーザー',
+            'email' => 'test@outlook.jp',
             'password' => Hash::make('12345678'),
         ]);
-
-        User::factory()->create([
-            'name' => '山田',
-            'email' => 'test2@yahoo.co.jp',
-            'password' => Hash::make('98765432'),
-        ]);
-
 
         $this->call([
             HomesTableSeeder::class,

@@ -40,7 +40,7 @@ class DiapersTableSeeder extends Seeder
             'day_id' => '1',
             'time' => '03:00:00',
             'type' => '2',
-            'memo' => 'ねむい',
+            'memo' => '',
         ]);
     }
 }

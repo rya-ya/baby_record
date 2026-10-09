@@ -15,18 +15,12 @@ class BabiesTableSeeder extends Seeder
     public function run(): void
     {
         Baby::create([
-            'name'=>'ぽこ',
-            'gender'=>'2',
-            'birthday'=>'2026-09-01',
-            'memo' => '',
-            'home_id' => 1,
-        ]);
-        Baby::create([
             'name'=>'ベビー',
             'gender'=>'1',
-            'birthday'=>'2026-09-24',
-            'memo' => '',
+            'birthday'=>'2026-09-01',
+            'memo' => 'テスト用',
             'home_id' => 1,
         ]);
+
     }
 }
