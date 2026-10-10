@@ -25,12 +25,12 @@
         <div class="flex justify-around gap-5 w-full ">
           <div class="text-xl mb-6 w-1/3">
             <label for="start-time">寝た時間</label>
-            <input type="time" id="start-time" name="start_time" value="{{ now()->format('H:i') }}" class="w-full">
+            <input type="time" id="start-time" name="start_time" value="{{ now()->format('H:i') }}" class="w-full rounded-md p-1 border">
           </div>
           <div class="text-xl mt-6">→</div>
           <div class="text-xl mb-6 w-1/3">
             <label for="end-time">起きた時間</label>
-            <input type="time" id="end-time" name="end_time" value="{{ now()->format('H:i') }}" class="w-full">
+            <input type="time" id="end-time" name="end_time" value="{{ now()->format('H:i') }}" class="w-full rounded-md p-1 border">
           </div>
 
         </div>

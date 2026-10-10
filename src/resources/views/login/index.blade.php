@@ -28,12 +28,12 @@
       <form action="{{ route('login.login') }}" method="post">
         @csrf
         <div class="flex items-center text-base mb-6 mx-auto">
-          <label for="email" class="w-20">EMAIL</label>
-          <input type="email" id="email" name="email" value="" class="ml-8 w-2/3 border required">
+          <label for="email" class="w-28 shrink-0">EMAIL</label>
+          <input type="email" id="email" name="email" value="" class="min-w-0 flex-1 border">
         </div>
         <div class="flex items-center text-base mb-6 mx-auto">
-          <label for="password" class="w-20">PASSWORD</label>
-          <input type="password" id="password" name="password" value="" class="ml-8 w-2/3 border required">
+          <label for="password" class="w-28 shrink-0">PASSWORD</label>
+          <input type="password" id="password" name="password" value="" class="min-w-0 flex-1 border">
         </div>
         <button type="submit" class="bg-gray-200 rounded-sm border mx-auto block py-4 px-10 mt-6">
           <div class="">ログイン</div>

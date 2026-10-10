@@ -24,7 +24,7 @@
         <input type="hidden" name="date" value="{{ $date }}">
         <div class="text-xl mb-6">
           <label for="time">時間</label>
-          <input type="time" id="time" name="time" value="{{ old('time',\Carbon\Carbon::parse($milk->time)->format('H:i')) }}" class="ml-16">
+          <input type="time" id="time" name="time" value="{{ old('time',\Carbon\Carbon::parse($milk->time)->format('H:i')) }}" class="ml-16 rounded-md p-1 border">
         </div>
         <div class="text-xl">
           <label for="amount">ミルク量</label>

@@ -28,7 +28,7 @@
         </div>
         <div class="text-xl mb-6 w-full flex gap-4 mt-8">
           <p>性別</p>
-          <dev class="ml-4 text-xl w-1/2 flex gap-12">
+          <dev class="ml-4 text-xl w-2/3 flex gap-12">
             <label>
               <input type="radio" name="gender" value="1" @checked(old('gender',$baby->gender)=='1') >男の子
             </label>
@@ -40,7 +40,7 @@
 
         <div class="text-xl mb-6 w-full flex gap-4 mt-8">
           <p>誕生日</p>
-          <input type="date" id="birthday" name="birthday" class="w-2/5 border" value="{{ old('birthday',$baby->birthday) }}">
+          <input type="date" id="birthday" name="birthday" class="w-3/5 border" value="{{ old('birthday',$baby->birthday) }}">
         </div>
 
         <div class="text-xl mb-6 w-full flex gap-4 mt-8">

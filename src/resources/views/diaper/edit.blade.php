@@ -25,7 +25,7 @@
         <input type="hidden" name="date" value="{{ $date }}">
         <div class="text-xl mb-6">
           <label for="time">時間</label>
-          <input type="time" id="time" name="time" value="{{ old('time',\Carbon\Carbon::parse($diaper->time)->format('H:i')) }}" class="ml-8">
+          <input type="time" id="time" name="time" value="{{ old('time',\Carbon\Carbon::parse($diaper->time)->format('H:i')) }}" class="ml-8 rounded-md p-1 border">
         </div>
         <div class="flex gap-4">
           <button type="button" id="peeButton" class="flex-1 border rounded-md p-4 bg-white-200" onclick="selectDiaper(1)">

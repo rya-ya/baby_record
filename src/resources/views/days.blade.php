@@ -22,10 +22,19 @@
       <label class="block mb-2 text-lg" for="date">
           記録する日にち
       </label>
-      <div class="ml-4 flex items-center gap-4 w-full">
+      <!-- <div class="ml-4 flex items-center gap-4 w-full">
           <span id="selected-date" class="font-semibold text-xl"></span>
           <button type="button" onclick="document.getElementById('date').showPicker()" class="bg-gray-200 px-3 py-1 rounded-lg border ">変更</button>
           <input type="date" id="date" name="date" value="{{ $date }}" class="hidden">
+      </div> -->
+
+      <!-- safariに対応 -->
+      <div class="ml-4 flex items-center gap-4 w-full">
+          <span id="selected-date" class="font-semibold text-xl"></span>
+          <div class="relative">
+              <button type="button" class="bg-gray-200 px-3 py-1 rounded-lg border">変更</button>
+              <input type="date" id="date" name="date" value="{{ $date }}" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
+          </div>
       </div>
     </div>
 

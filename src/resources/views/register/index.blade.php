@@ -31,7 +31,7 @@
           <p class="text-sm">登録の際にEメールは届きません。</p>
         </div>
         <div class="flex flex-col gap-2 text-base mb-6 mx-auto">
-          <label for="password" class="">パスワード（４文字以上）</label>
+          <label for="password" class="">パスワード（８文字以上）</label>
           <input type="password" id="password" name="password" value="" class="w-full border required">
         </div>
         <div class="flex flex-col gap-2 text-base mb-6 mx-auto">

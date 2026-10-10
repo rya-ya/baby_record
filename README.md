@@ -63,7 +63,7 @@ docker compose exec app php artisan migrate --seed
 
 ### 5. アクセス
 
-http://localhost
+http://localhost/login
 
 ## 本番環境
 
@@ -71,7 +71,7 @@ AWS EC2上にDocker Composeでアプリケーションを構築し、CaddyでHTT
 
 DuckDNSでドメインとEC2のIPアドレスを紐付け、CaddyでHTTPS証明書を自動管理しています。
 
-- **公開URL：** https://baby-record.duckdns.org
+- **公開URL：** https://baby-record.duckdns.org/login
 - **本番用設定：** `docker-compose.prod.yml`
 - **ドメイン・HTTPS：** DuckDNS / Caddy
 
