@@ -15,3 +15,5 @@ docker/db/mysql_data
 /.vscode/
 .DS_Store
 Thumbs.db
+
+/docker-compose.yml.backup

@@ -1,0 +1,41 @@
+
+services:
+  app:
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: docker/app/Dockerfile
+    expose:
+      - "80"
+    volumes:
+      - ./src:/var/www/html
+    depends_on:
+      - db
+
+  db:
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: docker/db/Dockerfile
+    volumes:
+      - ./docker/db/my.cnf:/etc/mysql/my.cnf
+      - ./docker/db/mysql_data:/var/lib/mysql
+    env_file:
+      - ./docker/db/db-variables.env
+
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - app
+
+volumes:
+  caddy_data:
+  caddy_config:
