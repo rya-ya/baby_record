@@ -11,7 +11,10 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        $middleware->redirectGuestsTo(function() {
+        // Caddyなどのリバースプロキシを信頼する
+        $middleware->trustProxies(at: '*');
+
+        $middleware->redirectGuestsTo(function () {
             return route('login.index');
         });
     })
