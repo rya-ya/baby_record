@@ -50,3 +50,29 @@ jobs:
 
       - name: Run Laravel tests
         run: php artisan test
+  deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@v1.2.0
+        env:
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          fingerprint: ${{ secrets.EC2_FINGERPRINT }}
+          envs: DEPLOY_PATH
+          script: |
+            set -eu
+            cd "$DEPLOY_PATH"
+            git pull --ff-only origin main
+            docker compose -f docker-compose.prod.yml up -d db app
+            docker compose -f docker-compose.prod.yml exec -T app composer install --no-interaction --prefer-dist --no-dev --optimize-autoloader
+            docker compose -f docker-compose.prod.yml exec -T app npm ci
+            docker compose -f docker-compose.prod.yml exec -T app npm run build
+            docker compose -f docker-compose.prod.yml exec -T app php artisan migrate --force
+            docker compose -f docker-compose.prod.yml exec -T app php artisan optimize:clear
+            docker compose -f docker-compose.prod.yml up -d --build
