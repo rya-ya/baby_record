@@ -36,7 +36,7 @@
           <input type="password" id="password" name="password" value="" class="min-w-0 flex-1 border">
         </div>
         <button type="submit" class="bg-gray-200 rounded-sm border mx-auto block py-4 px-10 mt-6">
-          <div class="">ログイン</div>
+          <div class="">ログイン画面</div>
         </button>
       </form>
     </div>
