@@ -65,6 +65,10 @@ docker compose exec app php artisan migrate --seed
 
 http://localhost/login
 
+
+### 6. その他
+- 2026/11/11 php 8.2.35へアップデート(PHP2Shell対応)
+
 ## 本番環境
 
 AWS EC2上にDocker Composeでアプリケーションを構築し、CaddyでHTTPS通信を行っています。
@@ -72,6 +76,7 @@ AWS EC2上にDocker Composeでアプリケーションを構築し、CaddyでHTT
 DuckDNSでドメインとEC2のIPアドレスを紐付け、CaddyでHTTPS証明書を自動管理しています。
 
 - **公開URL：** https://baby-record.duckdns.org/login
+- **デモ用ログインユーザー** `email:test@outlook.jp` `password:12345678`
 - **本番用設定：** `docker-compose.prod.yml`
 - **ドメイン・HTTPS：** DuckDNS / Caddy
 
